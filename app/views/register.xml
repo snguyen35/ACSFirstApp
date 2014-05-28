@@ -1,0 +1,29 @@
+<Alloy>
+	<Window class="container">
+	    <View id="body">
+	        
+    	    <Label id="labelTitle">Register new account</Label>
+    	    
+    	    <View id="usernameContainer">
+                <Label id="lbUsername">Username : </Label>
+                <TextField id="txtUsername" />
+            </View>
+            
+            <View id="passwordContainer">
+                <Label id="lbPassword">Password : </Label>
+                <TextField id="txtPassword" />
+            </View>
+            
+            <View id="passwordConfirmContainer">
+                <Label id="lbConfPassword">Confirm Password : </Label>
+                <TextField id="txtConfPassword" />
+            </View>
+            
+            <View id="btnContainer">
+                <Button id="btnRegister" title="Register" />
+                <Button id="btnCancel" title="Cancel" />
+            </View>
+            
+        </View>
+	</Window>
+</Alloy>

@@ -1,0 +1,135 @@
+
+".container":{
+  backgroundColor: "white"  
+}
+
+'Label':{
+	color: 'black'
+}
+
+'TextField':{
+	color:'black'
+}
+
+
+'#body':{
+	layout: 'vertical',	
+	borderWidth: '3dp',	
+	borderColor: '#3867a3',
+	borderRadius:'5dp',
+	width: '75%',	
+	height: '75%'
+}
+
+
+'#labelTitle':{
+	top: '20dp', 
+	height:'30dp'	
+}
+
+
+'#usernameContainer[formFactor=handheld]':{
+	top: '20dp',
+	left: '20dp',
+	right: '20dp',	
+	//width: "100%",
+	height: '60dp',
+	layout: 'vertical'		
+}
+
+	'#lbUsername':{
+		left: '0dp'		
+	}
+	
+	'#txtUsername[formFactor=handheld]':{		
+		left:'0dp',				 
+		width:Ti.UI.FILL,
+		height:Ti.UI.FILL,
+		//hintText:'enter username'
+		focusable: true,
+		borderWidth: '1dp',	
+		borderRadius: '5px',
+		borderColor: '#626265'				
+	}
+
+
+'#passwordContainer[formFactor=handheld]':{
+	top: '20dp',
+	left: '20dp',
+	right: '20dp',	
+	height: '60dp',	
+	layout: 'vertical'		
+}
+
+	'#lbPassword':{
+		left: '0dp',		
+	}
+
+	'#txtPassword[formFactor=handheld]':{
+		left: '0dp',
+		width:Ti.UI.FILL,
+		height:Ti.UI.FILL,
+		//hintText:'enter password'
+		passwordMask:true,
+		borderWidth: '1dp',	
+		borderRadius: '5px',
+		borderColor: '#626265',
+		
+	}
+
+
+'#passwordConfirmContainer[formFactor=handheld]':{
+	top: '20dp',
+	left: '20dp',
+	right: '20dp',	
+	height: '60dp',
+	layout: 'vertical'		
+}
+
+	'#lbConfPassword':{
+		left: '0dp',		
+	}
+
+	'#txtConfPassword[formFactor=handheld]':{
+		left: '0dp',
+		width:Ti.UI.FILL,
+		height:Ti.UI.FILL,
+		//hintText:'confirm password'
+		passwordMask:true,
+		borderWidth: '1dp',	
+		borderRadius: '5px',
+		borderColor: '#626265',
+		
+	}
+
+'#btnContainer':{
+	top: '20dp',
+	left: '20dp',
+	right: '20dp',	
+	height: '50dp',	
+	layout: 'horizontal'	
+}
+	
+	'#btnRegister':{	
+		left: '0dp',
+		height: '80%',
+		width: '40%',		
+		color: '#14396a',	
+		borderWidth: '1dp',	
+		borderColor: '#3867a3',
+		borderRadius:'5dp',
+		backgroundColor: '#468dcf',	
+		backgroundSelectedColor:'#63b9ee'
+	}
+	
+	'#btnCancel':{	
+		left: '20%',
+		height: '80%',
+		width: '40%',		
+		color: '#14396a',	
+		borderWidth: '1dp',	
+		borderColor: '#990000',
+		borderRadius:'5dp',
+		backgroundColor: '#FF7070',	
+		backgroundSelectedColor:'#CC3300'
+	}

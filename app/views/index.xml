@@ -1,0 +1,22 @@
+<Alloy>
+	<Window class="container">
+	    <View id="body">
+		    <Label id="labelTitle">Use CSC Id to login</Label>
+		
+    		<View id="usernameContainer">
+    		    <Label id="lbUsername">Username : </Label>
+    		    <TextField id="txtUsername" />
+    		</View>
+    		
+    		<View id="passwordContainer">
+    		    <Label id="lbPassword">Password : </Label>
+    		    <TextField id="txtPassword"  />
+    		</View>
+    		
+    		<View id="btnContainer">
+    		    <Button id="btnLogin" title="Login" />        
+                <Button id="btnRegister" title="Register" />            
+    		</View>
+		</View>
+	</Window>
+</Alloy>
