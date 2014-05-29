@@ -2,7 +2,7 @@
 	<Window class="container">
 	    <View id="body">
 	        
-    	    <Label id="labelTitle">Register new account</Label>
+    	    <Label id="lbTitle">Register new account</Label>
     	    
     	    <View id="usernameContainer">
                 <Label id="lbUsername">Username : </Label>

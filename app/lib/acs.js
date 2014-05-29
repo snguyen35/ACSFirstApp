@@ -4,6 +4,21 @@ var Cloud = require('ti.cloud');
 //Users
 //////////////
 
+exports.loginUser = function(username, password, callback) {
+    Cloud.Users.login({
+        login : username,
+        password : password
+    }, function(e) {
+        callback(e);
+    });
+};
+
+exports.logoutUser = function(callback) {
+    Cloud.Users.logout(function(e) {
+        callback(e);
+    });
+};
+
 exports.createUser = function (username, password, callback) {
   Cloud.Users.create({
       username : username,

@@ -1,4 +1,21 @@
 function Controller() {
+    function registerUser(username, password) {
+        function createUserCallBack(e) {
+            if (e.success) {
+                var user = e.users[0];
+                alert("Create user success");
+                var indexController = Alloy.createController("index", {
+                    username: user.username,
+                    password: user.password
+                });
+                indexController.getView().open();
+            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        }
+        function userExistCallback(e) {
+            e.success ? acs.createUser(username, password, createUserCallBack) : alert(e.message || JSON.stringify(e));
+        }
+        acs.userExist(username, userExistCallback);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "register";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,14 +38,14 @@ function Controller() {
         id: "body"
     });
     $.__views.register.add($.__views.body);
-    $.__views.labelTitle = Ti.UI.createLabel({
+    $.__views.lbTitle = Ti.UI.createLabel({
         color: "black",
         top: "20dp",
         height: "30dp",
         text: "Register new account",
-        id: "labelTitle"
+        id: "lbTitle"
     });
-    $.__views.body.add($.__views.labelTitle);
+    $.__views.body.add($.__views.lbTitle);
     $.__views.usernameContainer = Ti.UI.createView(function() {
         var o = {};
         _.extend(o, {});
@@ -197,21 +214,20 @@ function Controller() {
     $.__views.btnContainer.add($.__views.btnCancel);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
+    var acs = require("acs");
+    var validator = require("validator");
     var username = "";
     var password = "";
     var passwordConf = "";
-    var isSamePassword = false;
     $.btnRegister.addEventListener("click", function() {
-        password = $.txtPassword.value;
-        passwordConf = $.txtConfPassword.value;
-        password === passwordConf && (isSamePassword = true);
-        alert(isSamePassword);
-    });
-    $.btnCancel.addEventListener("click", function() {
         username = $.txtUsername.value;
         password = $.txtPassword.value;
-        alert(username + "---" + password);
+        passwordConf = $.txtConfPassword.value;
+        validator.isEmptyString(username) || validator.isEmptyString(password) || validator.isEmptyString(passwordConf) ? alert("Please enter full infor to register") : password === passwordConf ? registerUser(username, password) : alert("Password and Confirm Password do not match");
+    });
+    $.btnCancel.addEventListener("click", function() {
+        var indexController = Alloy.createController("index");
+        indexController.getView().open();
     });
     _.extend($, exports);
 }

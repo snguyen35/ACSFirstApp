@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container">
 	    <View id="body">
-		    <Label id="labelTitle">Use CSC Id to login</Label>
+		    <Label id="lbTitle">Use ACS account to login</Label>
 		
     		<View id="usernameContainer">
     		    <Label id="lbUsername">Username : </Label>

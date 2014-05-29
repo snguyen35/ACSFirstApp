@@ -1,4 +1,17 @@
 function Controller() {
+    function processLogin(username, password) {
+        function loginUserCallBack(e) {
+            if (e.success) {
+                var user = e.users[0];
+                Ti.App.userId = user.id;
+                var homeController = Alloy.createController("home", {
+                    username: user.username
+                });
+                homeController.getView().open();
+            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        }
+        acs.loginUser(username, password, loginUserCallBack);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,14 +34,14 @@ function Controller() {
         id: "body"
     });
     $.__views.index.add($.__views.body);
-    $.__views.labelTitle = Ti.UI.createLabel({
+    $.__views.lbTitle = Ti.UI.createLabel({
         color: "black",
         top: "20dp",
         height: "30dp",
-        text: "Use CSC Id to login",
-        id: "labelTitle"
+        text: "Use ACS account to login",
+        id: "lbTitle"
     });
-    $.__views.body.add($.__views.labelTitle);
+    $.__views.body.add($.__views.lbTitle);
     $.__views.usernameContainer = Ti.UI.createView(function() {
         var o = {};
         _.extend(o, {});
@@ -149,16 +162,25 @@ function Controller() {
         backgroundColor: "#FF7070",
         backgroundSelectedColor: "#CC3300",
         id: "btnRegister",
-        tititle: "Register"
+        title: "Register"
     });
     $.__views.btnContainer.add($.__views.btnRegister);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    require("ti.cloud");
+    var acs = require("acs");
+    var validator = require("validator");
+    var args = arguments[0] || {};
+    $.btnLogin.addEventListener("click", function() {
+        var username = $.txtUsername.value;
+        var password = $.txtPassword.value;
+        validator.isEmptyString(username) || validator.isEmptyString(password) ? alert("Please enter username and password !") : processLogin(username, password);
+    });
     $.btnRegister.addEventListener("click", function() {
         var registerController = Alloy.createController("register");
         registerController.getView().open();
     });
+    $.txtUsername.value = args.username;
+    $.txtPassword.value = args.password;
     $.index.open();
     _.extend($, exports);
 }

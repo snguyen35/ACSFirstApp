@@ -22,7 +22,7 @@
 }
 
 
-'#labelTitle':{
+'#lbTitle':{
 	top: '20dp', 
 	height:'30dp'	
 }
